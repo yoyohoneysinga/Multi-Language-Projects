@@ -1,60 +1,37 @@
-import numpy as np
-
 n = int(input("Enter a number: "))
+if n <= 0:
+    print("Please enter a positive integer.")
+    exit()
 
-def horizontal_conflict(n: int, arr: list) -> bool:
-    for i in range(n):
-        count = 0
-        for j in range(n):
-            if arr[i][j] == "Q":
-                count += 1
-                if count > 1:
-                    return True
-    return False
 
-def vertical_conflict(n: int, arr: list) -> bool:
-    for i in range(n):
-        count = 0
-        for j in range(n):
-            if arr[j][i] == "Q":
-                count += 1
-                if count > 1:
-                    return True
-    return False
+def is_valid_position(row, col, board, n):
+    for i in range(row):
+        if board[i][col] == "Q":
+            return False
 
-def diagonal_conflict(n: int, arr: list) -> bool:
-    main_diagonals = set()
-    anti_diagonals = set()
+    for i in range(1, row + 1):
+        if col - i >= 0 and board[row - i][col - i] == "Q":
+            return False
+        if col + i < n and board[row - i][col + i] == "Q":
+            return False
 
-    for i in range(n):
-        for j in range(n):
-            if arr[i][j] == "Q":
-                if (i - j) in main_diagonals:
-                    return True  
-                main_diagonals.add(i - j)
+    return True
 
-                if (i + j) in anti_diagonals:
-                    return True  
-                anti_diagonals.add(i + j)
-    
-    return False 
-
-def is_valid(n, board):
-    return False if horizontal_conflict(n, board) or vertical_conflict(n, board) or diagonal_conflict(n, board) else True
 
 def place_queen(n, board, row):
     if row == n:
         return True
-    
+
     for col in range(n):
-        board[row][col] = "Q"
-        if is_valid(n, board):
-            place_queen(n, board, row + 1)
-            continue
-        else:
-            board[row][col] = "-"
+        if is_valid_position(row, col, board, n):
+            board[row][col] = "Q"
+            if place_queen(n, board, row + 1):
+                return True
+            else:
+                board[row][col] = "-"
 
     return False
+
 
 board = [["-"] * n for _ in range(n)]
 if place_queen(n, board, 0):

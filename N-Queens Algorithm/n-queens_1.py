@@ -2,6 +2,7 @@ import numpy as np
 
 n = int(input("Enter a number: "))
 
+
 def horizontal_conflict(n: int, arr: list) -> bool:
     for i in range(n):
         count = 0
@@ -11,6 +12,7 @@ def horizontal_conflict(n: int, arr: list) -> bool:
                 if count > 1:
                     return True
     return False
+
 
 def vertical_conflict(n: int, arr: list) -> bool:
     for i in range(n):
@@ -22,6 +24,7 @@ def vertical_conflict(n: int, arr: list) -> bool:
                     return True
     return False
 
+
 def diagonal_conflict(n: int, arr: list) -> bool:
     main_diagonals = set()
     anti_diagonals = set()
@@ -30,17 +33,25 @@ def diagonal_conflict(n: int, arr: list) -> bool:
         for j in range(n):
             if arr[i][j] == "Q":
                 if (i - j) in main_diagonals:
-                    return True  
+                    return True
                 main_diagonals.add(i - j)
 
                 if (i + j) in anti_diagonals:
-                    return True  
+                    return True
                 anti_diagonals.add(i + j)
-    
-    return False 
+
+    return False
+
 
 def is_valid(n, board):
-    return False if horizontal_conflict(n, board) or vertical_conflict(n, board) or diagonal_conflict(n, board) else True
+    return (
+        False
+        if horizontal_conflict(n, board)
+        or vertical_conflict(n, board)
+        or diagonal_conflict(n, board)
+        else True
+    )
+
 
 queens_placed = 0
 while queens_placed < n:
@@ -55,7 +66,7 @@ while queens_placed < n:
                     board[row][col] = "Q"
                     print(f"Placing queen at ({row}, {col}):")
                     for row_display in board:
-                        print(" ".join(row_display)) 
+                        print(" ".join(row_display))
                     if is_valid(n, board):
                         queens_placed += 1
                         break
@@ -63,15 +74,12 @@ while queens_placed < n:
                         board[row][col] = "0"
                         print(f"Backtracking from ({row}, {col}):")
                         for row_display in board:
-                            print(" ".join(row_display))  
-        
+                            print(" ".join(row_display))
+
         if queens_placed == n:
             print("Solution found:")
             for row_display in board:
-                print(" ".join(row_display))  
+                print(" ".join(row_display))
             break
 
 print(np.array(board))
-
-
-
