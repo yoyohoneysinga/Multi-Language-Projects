@@ -1,8 +1,4 @@
 n = int(input("Enter a number: "))
-if n <= 0:
-    print("Please enter a positive integer.")
-    exit()
-
 
 def is_valid_position(row, col, board, n):
     for i in range(row):
