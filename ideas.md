@@ -6,7 +6,7 @@
 2. **Knapsack Problem**  
    A combinatorial optimization problem where you are given a set of items, each with a weight and a value, and your goal is to determine the maximum value you can carry in a knapsack without exceeding its weight capacity.
 
-3. **N-Queens Problem**  
+3. ~~**N-Queens Problem**~~  
    A backtracking problem that asks how to place N chess queens on an N×N chessboard so that no two queens threaten each other, i.e., no two queens share the same row, column, or diagonal.
 
 4. **Merge Sort**  
@@ -17,3 +17,6 @@
 
 6. **Number Factorization**  
    The process of breaking down a number into a set of factors (i.e., numbers that divide the original number without leaving a remainder). Common algorithms include trial division, Pollard's Rho, and the Sieve of Eratosthenes for prime factorization.
+
+7. **Max Knights**  
+   Determines the maximum number of chess knights on an N×N chessboard such that no two knights threaten each other.
