@@ -1,5 +1,6 @@
 n = int(input("Enter a number: "))
 
+
 def is_valid_position(row, col, board, n):
     for i in range(row):
         if board[i][col] == "Q":

@@ -4,6 +4,7 @@ def is_sorted(array):
             return False
     return True
 
+
 array = [23, 5, 87, 12, 41, 3, 59, 74, 18, 62]
 
 while not is_sorted(array):
