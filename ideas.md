@@ -15,7 +15,7 @@
 5. **Insertion Sort**  
    A simple sorting algorithm that builds the sorted array one element at a time by repeatedly taking an unsorted element and inserting it into its correct position in the sorted portion of the array.
 
-6. **Number Factorization**  
+6. ~~**Number Factorization**~~  
    The process of breaking down a number into a set of factors (i.e., numbers that divide the original number without leaving a remainder). Common algorithms include trial division, Pollard's Rho, and the Sieve of Eratosthenes for prime factorization.
 
 7. **Max Knights**  
